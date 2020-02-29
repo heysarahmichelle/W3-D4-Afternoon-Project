@@ -1,67 +1,49 @@
 import React, { Component }from 'react';
-import Data from "./react-i-ii-afternoon/data"
-import "./Employee.css"
+import data from "./react-i-ii-afternoon/data"
+import List from './Components/List'
+
 
 export default class App extends Component {
   constructor(){
     super();
       this.state={
-        employeeNames:['']
-
+        employees: data,
+        id: 0
       };
   }
-previousName=()=>{
-  this.setState({
-    employeeNames: this.state.employeeNames
-  })
-}
-nextName=()=>{
-  this.setState({
-    employeeNames: this.state.employeeNames
-  })
-}
+  increaseId=()=>{
+    if(this.state.id < this.state.employees.length-1){
+    this.setState({
+      id : this.state.id + 1
+    })
+  }
+  }
+  decreaseId=()=>{
+    if(this.state.id > 0){
+    this.setState({
+    id : this.state.id -1
+    })
+  }
+  }
+  delete=()=>{
 
+  }
 
   render(){
     return(
       <div>
+        <List list={this.state.employees} id={this.state.id}/>
+        <p>{this.state.id+1}/{this.state.employees.length}</p>
+        <button onClick={this.decreaseId}>{'<'}Previous</button>
+        <button>Edit</button>
+        <button>Delete</button>
+        <button>New</button>
+        <button onClick={this.increaseId}>Next{'>'}</button>
 
-        <div className="home-word">
-          <section className="home">Home</section>
-        </div>
-
-        <div className="black-box">
-
-          <section className="white-box">
-            <h5 className="employee-name"><span class="the-span">Employee Name</span></h5>
-            <h5 className="from">From:
-              <h5 className="job">Job Title:</h5>
-              <h5 className="employer">Employer:</h5>
-            </h5>
-            <h5 className="fav-movies">Favorite Movies:</h5>
-          </section>
-        </div>
-          <section className='blue-buttons-center'>
-            <button className="previous-next">
-    <h3 className="previous">{"<"}Previous</h3>
-            </button>
-            <button className="sort-button">
-                <h3 className="sort-button-two">Edit</h3>
-            </button>
-            <button className="sort-button">
-                <h3 className="sort-button-two">Delete</h3>
-            </button>
-            <button className="sort-button">
-                <h3 className="sort-button-two">New</h3>
-            </button>
-            <button className="previous-next">
-              <h3 className="next">Next{">"}</h3>
-            </button>
-          </section>
-
-        {this.state.employeeNames}
-        
+       
       </div>
     )
   }
 }
+
+
