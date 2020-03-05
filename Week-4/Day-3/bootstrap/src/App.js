@@ -24,6 +24,13 @@ function App() {
           <button>TELL ME MORE</button>
         </div>
       </div>
+        <div className="middle-container">
+          <p className='middle-container-font'>SERVICES</p>
+          <p className='middle-container-font-2'>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div className="end-container">
+
+        </div>
     </div>
   );
 }
